@@ -11,4 +11,5 @@ workflows:
           filters:
             branches:
               only:
-                - maininor
+                - main
+          label: getting-version-3
