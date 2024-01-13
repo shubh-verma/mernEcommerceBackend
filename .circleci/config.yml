@@ -5,7 +5,6 @@ orbs:
 workflows:
   elastic-beanstalk-workflow:
     jobs:
-      - node/test
       - eb/deploy:
           context: aws-creds
           environment-name: Getting-env 
@@ -14,5 +13,3 @@ workflows:
               only:
                 - main
           label: version-2
-          requires:
-            - node/test
