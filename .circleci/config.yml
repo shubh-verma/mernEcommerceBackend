@@ -13,3 +13,4 @@ workflows:
               only:
                 - main
           label: getting-version-3
+          application-name: getting
