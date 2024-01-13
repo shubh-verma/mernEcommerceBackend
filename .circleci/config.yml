@@ -1,15 +1,16 @@
 version: 2.1
 orbs:
-  eb: circleci/aws-elastic-beanstalk@1.0.0
-  node: circleci/node@4.1.0
+  eb: circleci/aws-elastic-beanstalk@2.0.1
+  node: circleci/node@5.2.0
 workflows:
   elastic-beanstalk-workflow:
     jobs:
       - eb/deploy:
           context: aws-creds
-          environment-name: Getting-env 
+          environment-name: Getting-env
           filters:
             branches:
               only:
                 - main
-          label: getting-version-5
+          label: getting-version-6
+          application-name: getting
