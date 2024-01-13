@@ -12,5 +12,4 @@ workflows:
             branches:
               only:
                 - main
-          label: getting-version-7
           application-name: getting
