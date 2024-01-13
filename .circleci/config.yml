@@ -12,4 +12,3 @@ workflows:
             branches:
               only:
                 - main
-          label: version-2
