@@ -12,4 +12,4 @@ workflows:
             branches:
               only:
                 - main
-          label: getting-version-4
+          label: getting-version-3
