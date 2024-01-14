@@ -11,10 +11,12 @@ app.get("/getData", (req, res) => {
 });
 
 // Listen on port 3000, IP defaults to 127.0.0.1
-app.listen(port);
+app.listen(port, () => {
+  console.log("Server running at http://127.0.0.1:" + port + "/");
+});
 
 // Put a friendly message on the terminal
-console.log("Server running at http://127.0.0.1:" + port + "/");
+
 //   http = require("http"),
 //   fs = require("fs"),
 //   html = fs.readFileSync("index.html");
