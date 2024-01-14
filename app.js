@@ -42,7 +42,7 @@ const server = http.createServer(function (req, res) {
 
 server.use(cors());
 
-server.get("/getData", (req, res) => {
+server.get("/", (req, res) => {
   res.send("Hello from backend!");
 });
 
