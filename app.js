@@ -1,53 +1,57 @@
-const port = process.env.PORT || 3000,
-  http = require("http"),
-  fs = require("fs"),
-  html = fs.readFileSync("index.html");
+import express from "express";
+import cors from "cors";
 
-const log = function (entry) {
-  fs.appendFileSync(
-    "/tmp/sample-app.log",
-    new Date().toISOString() + " - " + entry + "\n"
-  );
-};
+const port = process.env.PORT || 3000;
 
-const server = http.createServer(function (req, res) {
-  if (req.method === "POST") {
-    let body = "";
+const app = express();
+app.use(cors());
 
-    req.on("data", function (chunk) {
-      body += chunk;
-    });
-
-    req.on("end", function () {
-      if (req.url === "/") {
-        log("Received message: " + body);
-      } else if ((req.url = "/scheduled")) {
-        log(
-          "Received task " +
-            req.headers["x-aws-sqsd-taskname"] +
-            " scheduled at " +
-            req.headers["x-aws-sqsd-scheduled-at"]
-        );
-      }
-
-      res.writeHead(200, "OK", { "Content-Type": "text/plain" });
-      res.end();
-    });
-  } else {
-    res.writeHead(200);
-    res.write(html);
-    res.end();
-  }
-});
-
-server.use(cors());
-
-server.get("/", (req, res) => {
+app.get("/getData", (req, res) => {
   res.send("Hello from backend!");
 });
 
 // Listen on port 3000, IP defaults to 127.0.0.1
-server.listen(port);
+app.listen(port);
 
 // Put a friendly message on the terminal
 console.log("Server running at http://127.0.0.1:" + port + "/");
+//   http = require("http"),
+//   fs = require("fs"),
+//   html = fs.readFileSync("index.html");
+
+// const log = function (entry) {
+//   fs.appendFileSync(
+//     "/tmp/sample-app.log",
+//     new Date().toISOString() + " - " + entry + "\n"
+//   );
+// };
+
+// const server = http.createServer(function (req, res) {
+//   if (req.method === "POST") {
+//     let body = "";
+
+//     req.on("data", function (chunk) {
+//       body += chunk;
+//     });
+
+//     req.on("end", function () {
+//       if (req.url === "/") {
+//         log("Received message: " + body);
+//       } else if ((req.url = "/scheduled")) {
+//         log(
+//           "Received task " +
+//             req.headers["x-aws-sqsd-taskname"] +
+//             " scheduled at " +
+//             req.headers["x-aws-sqsd-scheduled-at"]
+//         );
+//       }
+
+//       res.writeHead(200, "OK", { "Content-Type": "text/plain" });
+//       res.end();
+//     });
+//   } else {
+//     res.writeHead(200);
+//     res.write(html);
+//     res.end();
+//   }
+// });
