@@ -5,7 +5,7 @@ app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.get("/getData", (req, res) => {
-  res.send("Hi from backend, kya ye chalega! yes chal gaya");
+  res.json({ message: "world" });
 });
 
 app.listen(port, () => {
