@@ -4,7 +4,7 @@ const app = express();
 app.use(cors());
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
+app.get("/getData", (req, res) => {
   res.send("Hi from backend, kya ye chalega! yes chal gaya");
 });
 
